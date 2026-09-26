@@ -16,14 +16,7 @@ Agrivoltaic systems grow crops under and between solar panels, so electricity ge
 
 ## Pipeline
 
-```text
-camera images ──► 01 metadata + solar position (pvlib)
-              ──► 02 ground mask (SAM + fixed ROI)
-              ──► 03 shadow probability maps (illumination-normalized ratio)
-              ──► 04 projection onto a ground grid (camera model, cm)
-              ──► 05 summary maps with panel rows
-              ──► 06 sun / shade time for a selected plant bed
-```
+Each image goes through ground segmentation, shadow detection and projection onto a 0.5 m ground grid. The results from all images are then combined into shade-frequency maps and sunlight-duration estimates. The scripts for each step are listed under [What each step does](#what-each-step-does).
 
 <p align="center"><img src="docs/images/pipeline.jpg" width="420" alt="Shadow detection pipeline: original image, ground segmentation, shadow probability, binary mask, ground grid"></p>
 
