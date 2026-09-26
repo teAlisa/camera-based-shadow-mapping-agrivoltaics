@@ -61,6 +61,8 @@ python scripts/06_bed_sun_exposure.py
 
 Paths are resolved relative to the repository, so the scripts can be run from any folder. Step 02 uses a SAM model through `ultralytics`; the model weights are downloaded automatically on first run.
 
+The camera pose (`sample_data/camera_model/APS_SP_camera_model.npz`) was estimated with camera calibration code shared by Gabriel Draughon. Camera intrinsics are approximated from the horizontal field of view (70°) and a radial distortion coefficient (see `config_example.yaml`).
+
 ## What each step does
 
 | Step | Script | Output |
