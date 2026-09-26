@@ -1,8 +1,8 @@
 # Camera-Based Shadow Mapping for Agrivoltaics
 
-**Alisa Teige** · Department of Computer Science, Michigan Technological University
-
-In collaboration with Gabriel Draughon (Engineering Fundamentals) and Anna Stuhlmacher (Electrical and Computer Engineering), Michigan Tech
+**Author:** Alisa Teige, Department of Computer Science, Michigan Technological University<br>
+**Faculty advisor:** Anna Stuhlmacher (Electrical and Computer Engineering)<br>
+**Technical mentor:** Gabriel Draughon (Engineering Fundamentals)
 
 This project estimates how much sun and shade the ground under and between solar panels receives over the day. It uses time-lapse images from a single fixed camera at an agrivoltaic site: it finds the ground, detects shadows in each image, projects them onto a real-world ground grid, and summarizes shade patterns for panel rows and individual plant beds.
 
@@ -84,6 +84,10 @@ ROI_X1, ROI_Y1, ROI_X2, ROI_Y2  scripts/02_create_sam_roi_masks.py
 ```
 
 If the camera moves, update these values before rerunning the pipeline.
+
+## Acknowledgments
+
+Thanks to Gabriel Draughon for technical guidance throughout the project and for sharing the camera calibration code and helping adapt it for this setup, and to Anna Stuhlmacher for advising this research.
 
 ## Contact
 
