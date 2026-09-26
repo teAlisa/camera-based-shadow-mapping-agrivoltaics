@@ -1,0 +1,53 @@
+project_root: "path/to/solar_shadow_analysis"
+
+paths:
+  image_dir: "sample_data/images"
+  mask_dir: "sample_data/masks"
+  metadata_dir: "sample_data/metadata"
+  camera_model: "sample_data/camera_model/APS_SP_camera_model.npz"
+  output_dir: "sample_outputs"
+
+camera:
+  hfov_deg: 70
+  distortion_coefficients:
+    - -0.28
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+
+shadow_model:
+  t: 0.45
+  k: 30
+  binary_threshold: 0.80
+  illum_kernel_size: 301
+  cleanup_kernel_size: 3
+  min_component_area: 300
+
+ground_grid:
+  x_min_cm: -550
+  x_max_cm: 550
+  y_min_cm: 50
+  y_max_cm: 2000
+  cell_size_cm: 50
+  min_visible_fraction: 0.2
+  binary_cell_threshold: 0.1
+
+panel_rows_pixels:
+  - row_id: 1
+    u_start: 227
+    v_start: 1036
+    u_end: 1210
+    v_end: 640
+
+  - row_id: 2
+    u_start: 1272
+    v_start: 1080
+    u_end: 1763
+    v_end: 634
+
+  - row_id: 3
+    u_start: 2634
+    v_start: 1123
+    u_end: 2232
+    v_end: 634

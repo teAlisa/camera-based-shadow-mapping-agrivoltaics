@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Model weights (downloaded automatically by ultralytics)
+*.pt
+
+# Generated outputs (re-create by running the pipeline)
+sample_data/metadata/
+sample_data/masks/
+sample_outputs/*
+!sample_outputs/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
