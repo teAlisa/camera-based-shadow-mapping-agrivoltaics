@@ -42,7 +42,7 @@ Two approaches were compared on 5 held-out, manually labeled images: a trained U
 
 ![Example comparison, early morning: green = true positive, red = false positive, blue = false negative](docs/images/method_comparison.jpg)
 
-- Both methods reach similar accuracy.
+- Both methods achieve similar detection accuracy, with slightly higher IoU and F1 for the probabilistic model.
 - The probabilistic model needs no training data or manual labeling.
 - U-Net++ estimates the total shaded area more accurately.
 - The probabilistic model was selected for full-scale processing (this repository). The U-Net++ baseline is not included here.
