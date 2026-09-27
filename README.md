@@ -53,8 +53,8 @@ Two approaches were compared on 5 held-out, manually labeled images: a trained U
 
 - Computed from all valid daytime images, mid-May to mid-June 2026.
 - Shade frequency is the fraction of daytime images in which a cell was classified as shaded (0.75 = shaded in 75% of images).
-- The Row 2–3 aisle is shaded more often than the Row 1–2 aisle.
-- The least-shaded zone is the middle of the Row 1–2 aisle.
+- The Row 2-3 aisle is shaded more often than the Row 1-2 aisle.
+- The least-shaded zone is the middle of the Row 1-2 aisle.
 - Gray cells are not visible to the camera or masked out.
 
 ### Sunlight duration for a plant row
@@ -87,15 +87,15 @@ The pipeline also estimates when a selected plant row is in direct sun and for h
 │   ├── 06_bed_sun_exposure.py
 │   └── findCoordinates.py    # helper: click on an image to get pixel coordinates
 ├── src/                      # reusable modules
-│   ├── metadata.py           # filenames → timestamps, solar position, daytime filter
+│   ├── metadata.py           # timestamps from filenames, solar position, daytime filter
 │   ├── sam_masks.py          # SAM ground masks + ROI + QC
 │   ├── shadow_model.py       # shadow probability model
-│   ├── camera_geometry.py    # camera model, world ↔ image projection
+│   ├── camera_geometry.py    # camera model and ground-to-image projection
 │   ├── ground_grid.py        # ground grid statistics
 │   ├── panel_rows.py         # solar panel row locations
 │   └── visualization.py      # figures
 ├── sample_data/
-│   ├── images/               # 14 sample images (5 July 2026, 08:51–11:01)
+│   ├── images/               # 14 sample images (5 July 2026, 08:51-11:01)
 │   └── camera_model/         # calibrated camera model (.npz)
 ├── sample_outputs/           # created when you run the pipeline
 ├── config_example.yaml       # main parameters in one place
@@ -123,14 +123,14 @@ The camera pose (`sample_data/camera_model/APS_SP_camera_model.npz`) was estimat
 
 ## What each step does
 
-| Step | Script | Output |
-|---|---|---|
-| 1 | `01_create_metadata.py` — reads timestamps from filenames, adds solar elevation/azimuth, keeps daytime images | `sample_data/metadata/image_metadata_all.csv`, `image_metadata.csv` |
-| 2 | `02_create_sam_roi_masks.py` — segments the visible ground with SAM, limits it to a fixed ROI, runs mask QC | `sample_data/masks/`, `sample_outputs/qc/` |
-| 3 | `03_generate_shadow_probability_maps.py` — per-pixel shadow probability from an illumination-normalized image ratio, plus binary shadow masks | `sample_outputs/shadow_probability_maps/` (`.png` for viewing, `.npy` for analysis), `sample_outputs/pred_masks/` |
-| 4 | `04_project_to_ground_grid.py` — projects each 50 cm ground cell into the image with the camera model and aggregates shadow statistics | `sample_outputs/grid_results/` |
-| 5 | `05_make_summary_maps.py` — average shadow probability and shade-frequency maps with panel rows overlaid | `sample_outputs/figures/` |
-| 6 | `06_bed_sun_exposure.py` — sunlit vs. shaded time and sunlit intervals for one plant bed | `sample_outputs/bed_sun_exposure/` |
+| Step | Script | What it does | Output |
+|---|---|---|---|
+| 1 | `01_create_metadata.py` | reads timestamps from filenames, adds solar elevation/azimuth, keeps daytime images | `sample_data/metadata/image_metadata_all.csv`, `image_metadata.csv` |
+| 2 | `02_create_sam_roi_masks.py` | segments the visible ground with SAM, limits it to a fixed ROI, runs mask QC | `sample_data/masks/`, `sample_outputs/qc/` |
+| 3 | `03_generate_shadow_probability_maps.py` | per-pixel shadow probability from an illumination-normalized image ratio, plus binary shadow masks | `sample_outputs/shadow_probability_maps/` (`.png` for viewing, `.npy` for analysis), `sample_outputs/pred_masks/` |
+| 4 | `04_project_to_ground_grid.py` | projects each 50 cm ground cell into the image with the camera model and aggregates shadow statistics | `sample_outputs/grid_results/` |
+| 5 | `05_make_summary_maps.py` | average shadow probability and shade-frequency maps with panel rows overlaid | `sample_outputs/figures/` |
+| 6 | `06_bed_sun_exposure.py` | sunlit vs. shaded time and sunlit intervals for one plant bed | `sample_outputs/bed_sun_exposure/` |
 
 ## Adapting to a new camera view
 
@@ -157,4 +157,4 @@ Thanks to Gabriel Draughon for technical guidance throughout the project and for
 
 ## Contact
 
-Alisa Teige — alisateige@gmail.com
+Alisa Teige, [alisateige@gmail.com](mailto:alisateige@gmail.com)
